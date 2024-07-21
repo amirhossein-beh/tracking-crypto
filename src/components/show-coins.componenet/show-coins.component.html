@@ -1,0 +1,38 @@
+
+<div class="h-screen text-white p-10">
+  <div class="bg-slate-800 px-5 py-4  rounded-2xl p-2">
+    <div class="border-2 rounded-md border-blue-100 border-opacity-25 py-4">
+      <div class="basis-20 flex justify-evenly items-center border-b border-b-blue-100 border-opacity-25 pb-4 ">
+        <img [src]="this.items.image" [alt]="this.items.id" class="h-28"/>
+        <div>
+          <div class="text-xl"><i class="ri-btc-line text-3xl pr-2"></i>{{this.items.symbol}}</div>
+          <div class="text-xl"><i class="ri-information-line text-3xl pr-2"></i>{{this.items.name }}</div>
+        </div>
+      </div>
+      <div class="basis-3/4 p-2 flex flex-col justify-evenly md:flex-row ">
+        <div class="flex flex-col mt-10">
+          <span><i class="ri-vip-crown-fill text-2xl pr-2"></i> market cap rank: {{this.items.market_cap_rank}}</span>
+          <span><i class="ri-money-dollar-circle-line text-2xl pr-2"></i>price change D: <span [class]="this.items.price_change_24h > 0  ? 'text-green-400' : 'text-red-400'"> {{this.items.price_change_24h}} $</span></span>
+          <span><i class="ri-money-dollar-circle-line text-2xl pr-2"></i>change percentage D: <span [class]="this.items.price_change_percentage_24h > 0  ? 'text-green-400' : 'text-red-400'"> {{this.items.price_change_percentage_24h}} %</span></span>
+          <div>
+            <span>
+              <i class="ri-line-chart-line text-2xl pr-2"></i>
+              <span>ath: {{this.items.ath}}</span>
+              <div> <i class="ri-calendar-line text-2xl pr-2"></i> ath date: {{this.items.ath_date}} </div>
+            </span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+        <i class="ri-cash-line text-2xl text-green-500"></i>
+        <span>market cap: {{this.items.market_cap}} $</span>
+        <span>price: {{this.items.current_price}} $</span>
+        <span>high: {{this.items.high_24h}} $</span>
+        <span>low: {{this.items.low_24h}} $</span>
+        <app-buttons (click)="testlog()" [class]="'bg-pink-700 text-center px-4 py-2 my-2 rounded-2xl'" [value]="'show chart'" [appendIcon]="'ri-arrow-right-line'"></app-buttons>
+      </div>
+    </div>
+    </div>
+  </div>
+  <app-buttons [class]="'bg-pink-700 px-8 py-2 text-center mt-3 rounded-2xl'" (click)="back()" [preIcon]="'ri-arrow-left-line'" [value]="'back'"></app-buttons>
+<!--  <button (click)="back()" class="bg-pink-700 px-8 py-2 m-5 rounded-2xl"><i class="ri-arrow-left-line"></i> back</button>-->
+</div>

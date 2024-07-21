@@ -1,0 +1,53 @@
+<div class=" px-10">
+  <table class="w-full text-blue-100">
+    <thead>
+      <tr class="h-20 bg-slate-900 z-10 rounded-2xl">
+      <th>id</th>
+      <th>symbol</th>
+      <th>icon</th>
+      <th (click)="sortData('current_price')" class="cursor-pointer select-none" >
+        price $
+        <i [class]="sortDirection['current_price'] ? 'ri-arrow-up-s-fill' : 'ri-arrow-down-s-fill'"></i>
+      </th>
+      <th (click)="sortData('market_cap')" class="cursor-pointer select-none">
+        marketCap
+        <i [class]="sortDirection['market_cap'] ? 'ri-arrow-up-s-fill' : 'ri-arrow-down-s-fill'"></i>
+      </th>
+      <th>rank</th>
+      <th (click)="sortData('price_change_percentage_24h')" class="cursor-pointer select-none">
+        change_percentage %
+        <i [class]="sortDirection['price_change_percentage_24h'] ? 'ri-arrow-up-s-fill' : 'ri-arrow-down-s-fill'"></i>
+      </th>
+      <th>updated time</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item  of items  index as i" (click)="getdata(item , i)" class="hover:bg-slate-600 hover:scale-105 transition-transform odd:bg-slate-800">
+        <td class="text-blue-200 text-center align-middle p-4 m-4 ">
+          <span>{{i + 1}}</span>
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+          <span>{{item.symbol}}</span>
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+          <img class="h-8 mx-auto" [src]="item.image">
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+          <span>{{item.current_price+ ' $'}}</span>
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+          <span>{{formatNumber(item.market_cap)}}</span>
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+          <span>{{item.market_cap_rank}}</span>
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+          <span [class]="item.price_change_percentage_24h > 0  ? 'text-green-400' : 'text-red-400'">{{item.price_change_percentage_24h + ' %' }}</span>
+        </td>
+        <td class="text-blue-200 text-center align-middle p-4 m-4">
+        <span>{{item.last_updated.split('T')[0]}}</span>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
